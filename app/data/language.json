@@ -1,0 +1,23 @@
+[
+    {
+        "time": "15 mins ago", 
+        "status": "offline", 
+        "statusicon": "EN", 
+        "read": 0, 
+        "message": "English"
+    }, 
+    {
+        "time": "45 mins ago", 
+        "status": "away", 
+        "statusicon": "DE", 
+        "read": 0, 
+        "message": "German"
+    }, 
+    {
+        "time": "1 hour ago", 
+        "status": "busy", 
+        "statusicon": "TR", 
+        "read": 0, 
+        "message": "Turkish"
+    }
+]

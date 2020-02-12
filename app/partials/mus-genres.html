@@ -1,0 +1,52 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'All Displays';">
+    <div class="col-lg-12" ng-controller="MusicGenreCtrl" ui-searchtabs>
+        <section class="box nobox">
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="input-group primary" inputgroup>
+                            <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control search-page-input" placeholder="Search for Displays" value="Graphic Design" ng-model="search.title">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <nav class='pull-right search-paging'>
+                            <uib-pagination ng-model="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit" previous-text="&lsaquo;" next-text="&rsaquo;"  class="pull-right"></uib-pagination>
+                        </nav>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12 search_data music_genre_data">
+                        <ul class="nav nav-tabs vertical col-md-2 col-lg-2 col-sm-3 col-xs-3 left-aligned">
+                            <li>
+                                <a href="" ng-click="resetFilters()" class="active">All Displays</a></li>
+                            <li ng-repeat="item in filtered = items | unique:'locationname' ">
+                                <a href="" ng-click="search.locationname=item.locationname">{{ item.locationname }}</a>
+                            </li>                           
+                        </ul>
+                        <div class="tab-content vertical col-md-10 col-lg-10 col-sm-9 col-xs-9 left-aligned">
+                            <div class="tab-pane fade in active" >
+                                <perfect-scrollbar wheel-propagation="true" suppress-scroll-x="true"  min-scrollbar-length="20" class='ps-scrollbar'>
+                                <div class="music_genre col-lg-3 col-md-4 col-sm-4 col-xs-6" ng-repeat="item in filtered = items | filter:search.locationname | startSearchFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                                    <div class="thumb">
+                                    <img class="img-responsive" src="data/songs/song-1.jpg">
+                                    <div class="overlay"><a ng-click="getitem(item.screen_id)" ui-sref="app.mus-song-view" ><i class="material-icons">play_circle_filled</i></a></div>
+                                    </div>
+                                    <div class="song-info">
+                                        <h4><a ng-click="getitem(item.screen_id)" ui-sref="app.mus-song-view">{{ item.screen_name }}</a>
+                                        </h4>
+                                        <p><a ng-click="getitem(item.screen_id)" ui-sref="app.mus-song-view">{{item.status}}</a>&ensp;<a ng-click="getitem(item.screen_id)" ui-sref="app.mus-genre-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
